@@ -29,6 +29,9 @@ else:
     st = {}
 
     for line in source:
+        pos = line.find("//")
+        if pos != -1:
+            line=line[:pos]
         if line[0] != "#":
             lex = shlex.shlex(line)
             words = list(lex)
@@ -54,10 +57,15 @@ else:
 
     disturbname[keys[random.randint(0,len(keys)-1)]]="\u202E"
 
+    disturb.write("//https://github.com/ouuan/Code-Disturber\n\n")
+
     for i in keys:
         disturb.write("#define " + disturbname[i] + " " + i + "\n")
 
     for line in source:
+        pos = line.find("//")
+        if pos != -1:
+            line=line[:pos]
         if line[0] != "#":
             lex = shlex.shlex(line)
             words = list(lex)
