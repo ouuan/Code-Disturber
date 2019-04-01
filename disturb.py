@@ -32,7 +32,7 @@ else:
         pos = line.find("//")
         if pos != -1:
             line=line[:pos]
-        if line[0] != "#":
+        if len(line)>0 and line[0] != "#":
             lex = shlex.shlex(line)
             words = list(lex)
             for i in words:
@@ -66,7 +66,7 @@ else:
         pos = line.find("//")
         if pos != -1:
             line=line[:pos]
-        if line[0] != "#":
+        if len(line)>0 and line[0] != "#":
             lex = shlex.shlex(line)
             words = list(lex)
             for i in words:
