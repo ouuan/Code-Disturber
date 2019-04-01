@@ -38,20 +38,20 @@ int main()
 The output:
 
 ```cpp
-#define 娠 cin
-#define 汦 std
-#define 囍 cout
-#define 潤 a
-#define 鉑 namespace
-#define 欘 using
-#define 變 int
-#define ‮ b
-#define 踾 main
-#define 嗤 return
-#define 憪 0
+#define 枢 using
+#define 翩 a
+#define 咊 0
+#define 駾 cout
+#define 邇 main
+#define 荠 namespace
+#define 满 cin
+#define ‮ int
+#define 樚 b
+#define 喹 std
+#define 鷴 return
 
 #include <iostream>
-欘 鉑 汦 ;變 踾 (){變 潤 ,‮ ;娠 >>潤 >>‮ ;囍 <<潤 +‮ ;嗤 憪 ;}
+枢 荠 喹 ;‮ 邇 (){‮ 翩 ,樚 ;满 >>翩 >>樚 ;駾 <<翩 +樚 ;鷴 咊 ;}
 ```
 
 ## Online examples
