@@ -3,6 +3,7 @@
 import sys
 import random
 import shlex
+import json
 
 def isVar(x):
     for i in range(len(x)):
@@ -11,10 +12,15 @@ def isVar(x):
     return True
 
 def getVar():
-	return chr(random.randint(19968,40869))
+    global characterset
+    global repeat
+    res = ''
+    for i in range(repeat):
+        res += chr(random.choice(characterset))
+    return res
 
-if len(sys.argv) < 2:
-    print("disturb.py <sourcefile>")
+if len(sys.argv) < 3 or len(sys.argv) > 5:
+    print("disturb.py <sourcefile> <characterset> [repeat=1 [RLO=1]]")
 else:
     source_file_name = sys.argv[1].split(".")
     source_name = source_file_name[0]
@@ -28,6 +34,20 @@ else:
 
     disturb = open(source_name+"disturb."+source_suffix, "w", encoding="utf-8")
 
+    global characterset
+    with open(sys.argv[2], "r") as charaterset_file:
+        characterset = json.load(charaterset_file)
+
+    if len(sys.argv) > 3:
+        repeat = int(sys.argv[3])
+    else:
+        repeat = 1
+
+    if len(sys.argv) >4:
+        RLO = int(sys.argv[4])
+    else:
+        RLO = 1
+    
     disturbname = {}
     st = {}
 
@@ -58,7 +78,8 @@ else:
                 
     random.shuffle(keys)
 
-    disturbname[keys[random.randint(0,len(keys)-1)]]="\u202E"
+    if RLO > 0:
+        disturbname[keys[random.randint(0,len(keys)-1)]]="\u202E"
 
     disturb.write("//https://github.com/ouuan/Code-Disturber\n\n")
 

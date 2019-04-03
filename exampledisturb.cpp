@@ -1,14 +1,14 @@
-#define 🔐 main
-#define 🐸 namespace
-#define 👚 std
-#define 📚 0
-#define 💎 a
-#define 👎 using
-#define 🐄 cin
-#define ‮ cout
-#define 💍 b
-#define 🕨 int
-#define 😊 return
+#define 🆘🔖 namespace
+#define 🐥🆑 0
+#define 🍏🐧 using
+#define 🎲🌳 return
+#define 🎬🐌 b
+#define 📙🀄 cin
+#define 📗💄 std
+#define 🎨🐢 a
+#define 📗🌶 main
+#define 🌛😃 cout
+#define 🙎🐀 int
 
 #include <iostream>
-👎 🐸 👚 ;🕨 🔐 (){🕨 💎 ,💍 ;🐄 >>💎 >>💍 ;‮ <<💎 +💍 ;😊 📚 ;}
+🍏🐧 🆘🔖 📗💄 ;🙎🐀 📗🌶 (){🙎🐀 🎨🐢 ,🎬🐌 ;📙🀄 >>🎨🐢 >>🎬🐌 ;🌛😃 <<🎨🐢 +🎬🐌 ;🎲🌳 🐥🆑 ;}

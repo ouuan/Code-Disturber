@@ -4,9 +4,12 @@ To generate "beautiful" codes.
 
 ## How to use?
 
-`python xxx.py <sourcefile>`
+`disturb.py <sourcefile> <characterset> [repeat=1 [RLO=1]]`
 
-e.g. `python chinese.py example.cpp`
+- sourcefile : sourcefile path
+- characterset : a json file contains Unicode codes
+- repeat : the length of a name
+- RLO（`0x202E`） : this ‮  is RLO
 
 ## How to compile the generated codes?
 
@@ -37,59 +40,67 @@ int main()
 
 ### Chinese
 
+`python disturb.py example.cpp Chinese.json`
+
 ```cpp
-#define 铤 std
-#define 无 return
-#define 曊 b
-#define 洞 a
-#define 抽 using
-#define 乨 int
-#define 砀 main
-#define 埚 cout
-#define ‮ namespace
-#define 磸 cin
-#define 孇 0
+#define 眠 int
+#define 酵 namespace
+#define 鸻 return
+#define 饫 b
+#define 费 main
+#define ‮ using
+#define 阇 std
+#define 唐 a
+#define 澘 0
+#define 扺 cout
+#define 怚 cin
 
 #include <iostream>
-抽 ‮ 铤 ;乨 砀 (){乨 洞 ,曊 ;磸 >>洞 >>曊 ;埚 <<洞 +曊 ;无 孇 ;}
+‮ 酵 阇 ;眠 费 (){眠 唐 ,饫 ;怚 >>唐 >>饫 ;扺 <<唐 +饫 ;鸻 澘 ;}
 ```
 
 ### Invisible
 
+`python disturb.py example.cpp invisible.json 5`
+
 ```cpp
-#define ‭‬‫‬‮ 0
-#define ‬‭‮‬‬ main
-#define ‬‫‬‭‭ return
-#define ‭‭‮‮‮ using
-#define ‫‭‫‭‬ b
-#define ‬‮‬‫‮ int
-#define ‬‬‬‮‬ std
-#define ‮ cin
-#define ‮‮‫‭‭ a
-#define ‮‮‫‮‮ namespace
-#define ‫‬‫‭‭ cout
+#define ‫‭‫‬‪ cin
+#define ‬‬‫‪‬ return
+#define ‮‬‭‬‭ int
+#define ‭‫‪‮‮ std
+#define ‭‮‪‫‫ cout
+#define ‪‪‮‪‮ namespace
+#define ‮‮‬‬‭ using
+#define ‪‭‫‫‪ a
+#define ‮ b
+#define ‬‭‭‬‪ 0
+#define ‬‪‮‪‮ main
 
 #include <iostream>
-‭‭‮‮‮ ‮‮‫‮‮ ‬‬‬‮‬ ;‬‮‬‫‮ ‬‭‮‬‬ (){‬‮‬‫‮ ‮‮‫‭‭ ,‫‭‫‭‬ ;‮ >>‮‮‫‭‭ >>‫‭‫‭‬ ;‫‬‫‭‭ <<‮‮‫‭‭ +‫‭‫‭‬ ;‬‫‬‭‭ ‭‬‫‬‮ ;}
+‮‮‬‬‭ ‪‪‮‪‮ ‭‫‪‮‮ ;‮‬‭‬‭ ‬‪‮‪‮ (){‮‬‭‬‭ ‪‭‫‫‪ ,‮ ;‫‭‫‬‪ >>‪‭‫‫‪ >>‮ ;‭‮‪‫‫ <<‪‭‫‫‪ +‮ ;‬‬‫‪‬ ‬‭‭‬‪ ;}
 ```
 
-### Emoji
+## Emoji
+
+The emoji codes are based on [the wiki](https://en.wikipedia.org/wiki/Emoji#Unicode_blocks), so if there are "?"s in the generated code, it is your system that doesn't support the certain emoji.
+
+`python disturb.py example.cpp emoji.json 2 0`
 
 ```cpp
-#define 🔐 main
-#define 🐸 namespace
-#define 👚 std
-#define 📚 0
-#define 💎 a
-#define 👎 using
-#define 🐄 cin
-#define ‮ cout
-#define 💍 b
-#define 🕨 int
-#define 😊 return
+#define 🆘🔖 namespace
+#define 🐥🆑 0
+#define 🍏🐧 using
+#define 🎲🌳 return
+#define 🎬🐌 b
+#define 📙🀄 cin
+#define 📗💄 std
+#define 🎨🐢 a
+#define 📗🌶 main
+#define 🌛😃 cout
+#define 🙎🐀 int
 
 #include <iostream>
-👎 🐸 👚 ;🕨 🔐 (){🕨 💎 ,💍 ;🐄 >>💎 >>💍 ;‮ <<💎 +💍 ;😊 📚 ;}
+🍏🐧 🆘🔖 📗💄 ;🙎🐀 📗🌶 (){🙎🐀 🎨🐢 ,🎬🐌 ;📙🀄 >>🎨🐢 >>🎬🐌 ;🌛😃 <<🎨🐢 +🎬🐌 ;🎲🌳 🐥🆑 ;}
 ```
 
 ## Online examples
@@ -97,14 +108,6 @@ int main()
 [LOJ](https://loj.ac/submission/393739)
 
 [Codeforces](https://codeforces.com/contest/235/submission/52145456)
-
-## Customize
-
-You can customize the disturber.
-
-For example, you can delete the line `disturbname[keys[random.randint(0,len(keys)-1)]]="\u202E"` so that there will be no RLO in the generated codes.
-
-You can change the function `getVar()` to generate codes in different character sets. However, some Unicode characters are not supported by Clang, please be careful with that.
 
 ## Contributor
 
