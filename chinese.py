@@ -10,6 +10,9 @@ def isVar(x):
             return False
     return True
 
+def getVar():
+	return chr(random.randint(19968,40869))
+
 if len(sys.argv) < 2:
     print("disturb.py <sourcefile>")
 else:
@@ -32,15 +35,15 @@ else:
         pos = line.find("//")
         if pos != -1:
             line=line[:pos]
-        if line[0] != "#":
+        if len(line)>0 and line[0] != "#":
             lex = shlex.shlex(line)
             words = list(lex)
             for i in words:
                 if isVar(i):
-                    x = random.randint(19968,40869)
-                    while x in st:
-                        x = random.randint(19968,40869)
-                    disturbname[i] = chr(x)
+                    while True:
+                        x = getVar()
+                        if x not in st: break
+                    disturbname[i] = x
                     st[x] = True
                 else:
                     disturbname[i]=i
@@ -66,7 +69,7 @@ else:
         pos = line.find("//")
         if pos != -1:
             line=line[:pos]
-        if line[0] != "#":
+        if len(line)>0 and line[0] != "#":
             lex = shlex.shlex(line)
             words = list(lex)
             for i in words:
