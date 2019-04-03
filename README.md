@@ -110,8 +110,3 @@ You can change the function `getVar()` to generate codes in different character 
 
 [mcfx0](https://github.com/mcfx0)/[**Code-Disturber**](https://github.com/mcfx0/Code-Disturber).
 
-
-##### Why is your python so ugly?
-
-Because my python is totally based on baidu.
-
