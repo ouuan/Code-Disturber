@@ -4,12 +4,13 @@ To generate "beautiful" codes.
 
 ## How to use?
 
-`disturb.py <sourcefile> <characterset> [repeat=1 [RLO=1]]`
+`disturb.py <sourcefile> <characterset> [length=1 [RLO=1 [newline=0]]]`
 
 - sourcefile : sourcefile path
 - characterset : a json file contains Unicode codes
-- repeat : the length of a name
+- length : the length of a macro name
 - RLO（`0x202E`） : this ‮  is RLO
+- newline : to have newlines in the codes besides `#include` and `#define`
 
 ## How to compile the generated codes?
 
@@ -17,7 +18,7 @@ To generate "beautiful" codes.
 
 For example, [LOJ](https://loj.ac/) and [Codeforces](https://codeforces.com/) support Clang.
 
-## Examples
+## Demos
 
 ### Source code
 
@@ -29,11 +30,8 @@ using namespace std;
 int main()
 {
     int a,b;
-
     cin>>a>>b;
-
     cout<<a+b;
-
     return 0;
 }
 ```
@@ -103,13 +101,51 @@ The emoji codes are based on [the wiki](https://en.wikipedia.org/wiki/Emoji#Unic
 🍏🐧 🆘🔖 📗💄 ;🙎🐀 📗🌶 (){🙎🐀 🎨🐢 ,🎬🐌 ;📙🀄 >>🎨🐢 >>🎬🐌 ;🌛😃 <<🎨🐢 +🎬🐌 ;🎲🌳 🐥🆑 ;}
 ```
 
-## Online examples
+`python disturb.py example.cpp emoji.json 1 1 1`
+
+```cpp
+#define 🎀 int
+#define 🎎 main
+#define 🌉 using
+#define 📢 return
+#define 🌟 std
+#define 💤 namespace
+#define 🧓 a
+#define 💡 cin
+#define 🔽 0
+#define ‮ cout
+#define 🚡 b
+
+#include <iostream>
+
+🌉 💤 🌟 ;
+
+🎀 🎎 ()
+{
+🎀 🧓 ,🚡 ;
+💡 >>🧓 >>🚡 ;
+‮ <<🧓 +🚡 ;
+📢 🔽 ;
+}
+
+```
+
+### Online demos
 
 [LOJ](https://loj.ac/submission/393739)
 
 [Codeforces](https://codeforces.com/contest/235/submission/52145456)
 
+## Hints
+
+1. The generated codes may look strange due to the RLO.
+2. If it runs for a long time, try to increase the parameter `length`.
+
+## ~~Known bugs~~ Some features
+
+1. Only support variable name in this format: `[0-9a-z_]+`.
+2. Doesn't work on `1e-9` —— `1e` + `-` + `9` instead.
+
 ## Contributor
 
-[mcfx0](https://github.com/mcfx0)/[**Code-Disturber**](https://github.com/mcfx0/Code-Disturber).
-
+[mcfx0](https://github.com/mcfx0)/[**Code-Disturber**](https://github.com/mcfx0/Code-Disturber), for the idea of having more than one character in the macro name and invisible characters.

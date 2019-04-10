@@ -13,14 +13,14 @@ def isVar(x):
 
 def getVar():
     global characterset
-    global repeat
+    global length
     res = ''
-    for i in range(repeat):
+    for i in range(length):
         res += chr(random.choice(characterset))
     return res
 
-if len(sys.argv) < 3 or len(sys.argv) > 5:
-    print("disturb.py <sourcefile> <characterset> [repeat=1 [RLO=1]]")
+if len(sys.argv) < 3 or len(sys.argv) > 6:
+    print("disturb.py <sourcefile> <characterset> [length=1 [RLO=1 [newline=0]]]")
 else:
     source_file_name = sys.argv[1].split(".")
     source_name = source_file_name[0]
@@ -33,20 +33,24 @@ else:
         source_file.close()
 
     disturb = open(source_name+"disturb."+source_suffix, "w", encoding="utf-8")
-
-    global characterset
+    
     with open(sys.argv[2], "r") as charaterset_file:
         characterset = json.load(charaterset_file)
 
     if len(sys.argv) > 3:
-        repeat = int(sys.argv[3])
+        length = int(sys.argv[3])
     else:
-        repeat = 1
+        length = 1
 
-    if len(sys.argv) >4:
+    if len(sys.argv) > 4:
         RLO = int(sys.argv[4])
     else:
         RLO = 1
+
+    if len(sys.argv) > 5:
+        newline = int(sys.argv[5])
+    else:
+        newline = 0
     
     disturbname = {}
     st = {}
@@ -90,13 +94,17 @@ else:
         pos = line.find("//")
         if pos != -1:
             line=line[:pos]
-        if len(line)>0 and line[0] != "#":
+        if len(line) == 0:
+            continue
+        if line[0] != "#":
             lex = shlex.shlex(line)
             words = list(lex)
             for i in words:
                 disturb.write(disturbname[i])
                 if i != disturbname[i]:
                     disturb.write(' ')
+            if newline > 0:
+                disturb.write('\n')
         else:
             disturb.write('\n')
             disturb.write(line)
