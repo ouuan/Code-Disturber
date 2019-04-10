@@ -57,6 +57,48 @@ int main()
 ‮ 酵 阇 ;眠 费 (){眠 唐 ,饫 ;怚 >>唐 >>饫 ;扺 <<唐 +饫 ;鸻 澘 ;}
 ```
 
+### Japanese
+
+` python disturb.py example.cpp Japanese.json`
+
+```cpp
+#define ヱ a
+#define メ std
+#define レ int
+#define ヂ using
+#define ぷ return
+#define ‮ cout
+#define バ namespace
+#define カ 0
+#define ふ cin
+#define じ b
+#define ウ main
+
+#include <iostream>
+ヂ バ メ ;レ ウ (){レ ヱ ,じ ;ふ >>ヱ >>じ ;‮ <<ヱ +じ ;ぷ カ ;}
+```
+
+### gua
+
+`python disturb.py example.cpp gua.json`
+
+```cpp
+#define ‮ std
+#define ䷞ cout
+#define ䷑ main
+#define ䷼ cin
+#define ䷳ 0
+#define ䷦ namespace
+#define ䷋ int
+#define ䷚ b
+#define ䷙ using
+#define ䷫ return
+#define ䷠ a
+
+#include <iostream>
+䷙ ䷦ ‮ ;䷋ ䷑ (){䷋ ䷠ ,䷚ ;䷼ >>䷠ >>䷚ ;䷞ <<䷠ +䷚ ;䷫ ䷳ ;}
+```
+
 ### Invisible
 
 `python disturb.py example.cpp invisible.json 5`
@@ -78,7 +120,7 @@ int main()
 ‮‮‬‬‭ ‪‪‮‪‮ ‭‫‪‮‮ ;‮‬‭‬‭ ‬‪‮‪‮ (){‮‬‭‬‭ ‪‭‫‫‪ ,‮ ;‫‭‫‬‪ >>‪‭‫‫‪ >>‮ ;‭‮‪‫‫ <<‪‭‫‫‪ +‮ ;‬‬‫‪‬ ‬‭‭‬‪ ;}
 ```
 
-## Emoji
+### Emoji
 
 The emoji codes are based on [the wiki](https://en.wikipedia.org/wiki/Emoji#Unicode_blocks), so if there are "?"s in the generated code, it is your system that doesn't support the certain emoji.
 
@@ -136,6 +178,14 @@ The emoji codes are based on [the wiki](https://en.wikipedia.org/wiki/Emoji#Unic
 
 [Codeforces](https://codeforces.com/contest/235/submission/52145456)
 
+## Create characterset by yourself
+
+You can use `gen.py` to help you.
+
+[This blog](https://www.cnblogs.com/chris-oil/p/8677309.html) may be useful.
+
+[This website](https://www.sojson.com/unicode.html) may be useful.
+
 ## Hints
 
 1. The generated codes may look strange due to the RLO.
@@ -143,7 +193,7 @@ The emoji codes are based on [the wiki](https://en.wikipedia.org/wiki/Emoji#Unic
 
 ## ~~Known bugs~~ Some features
 
-1. Only support variable name in this format: `[0-9a-z_]+`.
+1. Only support variable name in this format : `[0-9a-z_]+`.
 2. Doesn't work on `1e-9` —— `1e` + `-` + `9` instead.
 
 ## Contributor
